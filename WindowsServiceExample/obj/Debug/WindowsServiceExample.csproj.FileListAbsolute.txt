@@ -1,6 +1,0 @@
-D:\Projects\Example\WindowsServiceExample\WindowsServiceExample\bin\Debug\WindowsServiceExample.exe.config
-D:\Projects\Example\WindowsServiceExample\WindowsServiceExample\bin\Debug\WindowsServiceExample.exe
-D:\Projects\Example\WindowsServiceExample\WindowsServiceExample\bin\Debug\WindowsServiceExample.pdb
-D:\Projects\Example\WindowsServiceExample\WindowsServiceExample\obj\Debug\WindowsServiceExample.csprojResolveAssemblyReference.cache
-D:\Projects\Example\WindowsServiceExample\WindowsServiceExample\obj\Debug\WindowsServiceExample.exe
-D:\Projects\Example\WindowsServiceExample\WindowsServiceExample\obj\Debug\WindowsServiceExample.pdb

@@ -1,5 +1,0 @@
-D:\Projects\Example\WindowsServiceExample\WindowsServiceExample\bin\Release\WindowsServiceExample.exe.config
-D:\Projects\Example\WindowsServiceExample\WindowsServiceExample\bin\Release\WindowsServiceExample.exe
-D:\Projects\Example\WindowsServiceExample\WindowsServiceExample\bin\Release\WindowsServiceExample.pdb
-D:\Projects\Example\WindowsServiceExample\WindowsServiceExample\obj\Release\WindowsServiceExample.exe
-D:\Projects\Example\WindowsServiceExample\WindowsServiceExample\obj\Release\WindowsServiceExample.pdb
