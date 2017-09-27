@@ -1,0 +1,15 @@
+c:\users\mmartinez\documents\visual studio 2017\Projects\TestEdge\TestEdge\bin\Debug\edge\double_edge.js
+c:\users\mmartinez\documents\visual studio 2017\Projects\TestEdge\TestEdge\bin\Debug\edge\edge.js
+c:\users\mmartinez\documents\visual studio 2017\Projects\TestEdge\TestEdge\bin\Debug\edge\x64\node.dll
+c:\users\mmartinez\documents\visual studio 2017\Projects\TestEdge\TestEdge\bin\Debug\edge\x86\node.dll
+c:\users\mmartinez\documents\visual studio 2017\Projects\TestEdge\TestEdge\bin\Debug\edge\x64\edge_nativeclr.node
+c:\users\mmartinez\documents\visual studio 2017\Projects\TestEdge\TestEdge\bin\Debug\edge\x86\edge_nativeclr.node
+c:\users\mmartinez\documents\visual studio 2017\Projects\TestEdge\TestEdge\bin\Debug\TestEdge.exe.config
+c:\users\mmartinez\documents\visual studio 2017\Projects\TestEdge\TestEdge\bin\Debug\TestEdge.exe
+c:\users\mmartinez\documents\visual studio 2017\Projects\TestEdge\TestEdge\bin\Debug\TestEdge.pdb
+c:\users\mmartinez\documents\visual studio 2017\Projects\TestEdge\TestEdge\bin\Debug\EdgeJs.dll
+c:\users\mmartinez\documents\visual studio 2017\Projects\TestEdge\TestEdge\obj\Debug\TestEdge.csprojResolveAssemblyReference.cache
+c:\users\mmartinez\documents\visual studio 2017\Projects\TestEdge\TestEdge\obj\Debug\TestEdge.csproj.CoreCompileInputs.cache
+c:\users\mmartinez\documents\visual studio 2017\Projects\TestEdge\TestEdge\obj\Debug\TestEdge.exe
+c:\users\mmartinez\documents\visual studio 2017\Projects\TestEdge\TestEdge\obj\Debug\TestEdge.pdb
+c:\users\mmartinez\documents\visual studio 2017\Projects\TestEdge\TestEdge\bin\Debug\TestServer.js
