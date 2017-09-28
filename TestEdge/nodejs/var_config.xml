@@ -3,7 +3,7 @@
 	<devices>
 		<device id="1">
 			<variables id="A">
-				<variable type="Double" id="A1" nodeId="ns=1;b=1020FFAA" name="VariableA1">5.00</variable>
+				<variable type="Double" id="A1" nodeId="ns=1;b=1020FFAA" name="VariableA1">5.01</variable>
 				<variable type="Integer" id="A2" nodeId="ns=1;b=1020FFAB" name="VariableA2">23</variable>
 			</variables>
 		</device>

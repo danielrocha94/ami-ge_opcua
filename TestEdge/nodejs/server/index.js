@@ -1,6 +1,7 @@
 var opcua = require("node-opcua");
 var Device = require("../modelos/device.js");
 var Variable = require("../modelos/variable.js");
+var XmlManager = require('../modelos/xml_manager.js');
 
 var server = new opcua.OPCUAServer({
     port: 4334, // the port of the listening socket of the server
@@ -12,10 +13,8 @@ var server = new opcua.OPCUAServer({
     }
 });
 
-var device1 = new Device("Device1");
-var var1 = new Variable("primer variable", "ns=1;b=1020FFAA", "Variable", 5.00, "Double", "Device1");
-var var2 = new Variable("segunda variable", "ns=1;b=1020FFAB", "Variable", 23, "Integer", "Device1")
 var devices = [];
+var data = []
 
 function post_initialize() {
 	console.log("initialized!");
@@ -24,6 +23,16 @@ function post_initialize() {
 
 		var addressSpace = server.engine.addressSpace;
 
+        var manager = new XmlManager('./var_config.xml');
+        data = manager.getXmlFromFile();
+        data.devices.map((device) => {devices[device.getName()] = addDevice(device)});
+        
+        data.variables.map((variables) => {
+            variables.map( (variable) => { 
+                addVariable(variable, devices[variable.getDevice()]);
+            });
+        });
+
         function addDevice(device) {
             return addressSpace.addObject({
                 organizedBy: addressSpace.rootFolder.objects,
@@ -31,9 +40,6 @@ function post_initialize() {
             });
         }
         
-        function loadXmlVariables(xmlFile){}
-
-
         function addVariable(variable, device) {
             debugger;
         	addressSpace.addVariable({
@@ -48,10 +54,6 @@ function post_initialize() {
             	}
         	});
         }
-
-        devices[device1.getName()] = addDevice(device1);
-        addVariable(var1, devices[var1.getDevice()]);
-        addVariable(var2, devices[var2.getDevice()])
 	}
 	construct_my_address_space(server);
 
