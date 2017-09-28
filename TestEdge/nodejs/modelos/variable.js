@@ -21,7 +21,7 @@ class Variable {
 	}
 
 	getValue() {
-		return this.value;
+		return parseInt(this.value);
 	}
 
 	getDataType() {

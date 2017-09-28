@@ -34,7 +34,12 @@ function XmlManager(file) {
 		var variable = require("./variable.js");
 		return devices.map((device)=> {
 			return device.variables[0].variable.map((variab) => {
-				return new variable(variab.$.id, variab.$.type)
+				return new variable(
+									variab.$.id,
+									variab.$.type,
+									variab.$.nodeId,
+									variab.$.name,
+									variab._ )
 			});
 		});
 	}
