@@ -1,0 +1,17 @@
+<config port="4334" resource_path="UA/OPCUAServer">
+	<buildInfo product="AmiGeServer" number="1" date="2014/5/27"/>
+	<devices>
+		<device id="1">
+			<variables id="A">
+				<variable type="Double" id="A1" nodeId="ns=1;b=1020FFAA" name="VariableA1">5.01</variable>
+				<variable type="Integer" id="A2" nodeId="ns=1;b=1020FFAB" name="VariableA2">23</variable>
+			</variables>
+		</device>
+		<device id="2">
+			<variables id="B">
+				<variable type="Double" id="B1" nodeId="ns=2;b=1020FFAC" name="VariableB1">32.43</variable>
+				<variable type="Integer" id="B2" nodeId="ns=2;b=1020FFAD" name="VariableB2">45</variable>
+			</variables>
+		</device>
+	</devices>
+</config>

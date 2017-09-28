@@ -13,3 +13,18 @@ c:\users\mmartinez\documents\visual studio 2017\Projects\TestEdge\TestEdge\obj\D
 c:\users\mmartinez\documents\visual studio 2017\Projects\TestEdge\TestEdge\obj\Debug\TestEdge.exe
 c:\users\mmartinez\documents\visual studio 2017\Projects\TestEdge\TestEdge\obj\Debug\TestEdge.pdb
 c:\users\mmartinez\documents\visual studio 2017\Projects\TestEdge\TestEdge\bin\Debug\TestServer.js
+C:\Users\Daniel\Desktop\ami-ge_opcua\TestEdge\bin\Debug\edge\double_edge.js
+C:\Users\Daniel\Desktop\ami-ge_opcua\TestEdge\bin\Debug\edge\edge.js
+C:\Users\Daniel\Desktop\ami-ge_opcua\TestEdge\bin\Debug\edge\x64\node.dll
+C:\Users\Daniel\Desktop\ami-ge_opcua\TestEdge\bin\Debug\edge\x86\node.dll
+C:\Users\Daniel\Desktop\ami-ge_opcua\TestEdge\bin\Debug\edge\x64\edge_nativeclr.node
+C:\Users\Daniel\Desktop\ami-ge_opcua\TestEdge\bin\Debug\edge\x86\edge_nativeclr.node
+C:\Users\Daniel\Desktop\ami-ge_opcua\TestEdge\bin\Debug\TestServer.js
+C:\Users\Daniel\Desktop\ami-ge_opcua\TestEdge\bin\Debug\TestEdge.exe.config
+C:\Users\Daniel\Desktop\ami-ge_opcua\TestEdge\bin\Debug\TestEdge.exe
+C:\Users\Daniel\Desktop\ami-ge_opcua\TestEdge\bin\Debug\TestEdge.pdb
+C:\Users\Daniel\Desktop\ami-ge_opcua\TestEdge\bin\Debug\EdgeJs.dll
+C:\Users\Daniel\Desktop\ami-ge_opcua\TestEdge\obj\Debug\TestEdge.csprojResolveAssemblyReference.cache
+C:\Users\Daniel\Desktop\ami-ge_opcua\TestEdge\obj\Debug\TestEdge.csproj.CoreCompileInputs.cache
+C:\Users\Daniel\Desktop\ami-ge_opcua\TestEdge\obj\Debug\TestEdge.exe
+C:\Users\Daniel\Desktop\ami-ge_opcua\TestEdge\obj\Debug\TestEdge.pdb
