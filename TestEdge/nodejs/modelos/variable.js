@@ -21,7 +21,18 @@ class Variable {
 	}
 
 	getValue() {
-		return parseInt(this.value);
+		var value;
+		switch(this.dataType){
+			case 'Integer':
+				value = parseInt(this.value);
+				break;
+			case 'Double':
+				value = parseFloat(this.value);
+				break;
+			default:
+				value = this.value;
+		}
+		return value;
 	}
 
 	getDataType() {
