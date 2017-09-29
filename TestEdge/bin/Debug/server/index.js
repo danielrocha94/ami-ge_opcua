@@ -69,7 +69,7 @@ return function() {
                     }
                 ],
                 outputArguments: [{
-                    name: "Variable created!",
+                    name: "New variable",
                     description: { text: "The generated variable"},
                     dataType: opcua.DataType.String,
                     valueRank: 1
@@ -84,11 +84,10 @@ return function() {
                 var value = inputArguments[4].value;
                 var device = inputArguments[5].value;
 
-                console.log(nodeId, ": Se ha creado una variable con el nombre de '", name, "' con el valor de '", value, "'");
-
-                var newVariable = new Variable(id, nodeId, name, value, dataType, device)
-                debugger;
+                var newVariable = new Variable(id, dataType, nodeId, name, value, device)
                 addVariable(newVariable, devices[newVariable.getDevice()]);
+
+                console.log(nodeId, ": Se ha creado una variable con el nombre de '", name, "' con el valor de '", value, "'");
 
                 var callMethodResult = {
                     statusCode: opcua.StatusCodes.Good,
@@ -109,7 +108,6 @@ return function() {
             }
             
             function addVariable(variable, device) {
-                debugger;
             	addressSpace.addVariable({
                     nodeId: variable.getNodeId(),
                 	componentOf: device,
