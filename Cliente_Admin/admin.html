@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cliente Admin</title>
+</head>
+<link rel="stylesheet" href="styles/jquery-ui.css">
+<style>
+    label, input { display:block; }
+    input.text { margin-bottom:12px; width:95%; padding: .4em; }
+    fieldset { padding:0; border:0; margin-top:25px; }
+    h1 { font-size: 1.2em; margin: .6em 0; }
+    div#users-contain { width: 350px; margin: 20px 0; }
+    div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+    div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+    .ui-dialog .ui-state-error { padding: .3em; }
+    .validateTips { border: 1px solid transparent; padding: 0.3em; }
+</style>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+ 	/*JSON de datos para llenar la tabla*/
+$(document).ready(function(){
+
+	var obj = { 
+		devices:[ 
+			{ 
+				id: "Device1", 
+				variables: [
+					{ type: "int", id:"A1", length:0 },
+					{ type: "int", id:"A2", length:0 },
+				] 
+			}, 
+			{ 
+				id: "Device2", 
+				variables: [
+					{ type: "int", id:"A3", length:0 },
+					{ type: "int", id:"A4", length:0 },
+				]  
+			} 
+		]
+	};
+	//$("#devices tbody").html("");
+	//$.getJSON(url,function(devices){
+	$.each(obj.devices, function(i,device){
+		$.each(device.variables, function(i,variable){
+			/*Agrega los rows a la tabla con los datos dados del JSON*/
+			var newRow =
+				"<tr>"
+				+"<td>"+device.id+"</td>"
+				+"<td>"+variable.id+"</td>"
+				+"<td>"+variable.type+"</td>"
+				+"<td>"+variable.length+"</td>"
+        +"<td>  <input class = 'removebutton' type='button' onclick='' value='Remove' data-extra='"+device.id+"'/> </td>" 
+				+"</tr>";
+			$(newRow).appendTo("#devices tbody");
+				
+		});
+		
+
+		
+	});
+/*Funcion para uno de los bottones para poder remover el dato de la tabla.*/
+  $(".removebutton").each(function(i, button){
+      $(button).on('click', function(){
+        alert($(this).data('extra')); 
+      });
+    });
+//});
+});
+</script>
+  <script>
+  $( function() {
+    var dialog, form,
+      /*Agrega datos a la tabla */
+      deviceid = $("#deviceid"),
+      variableid = $( "#variableid" ),
+      type = $( "#type" ),
+      length = $( "#length" ),
+      allFields = $( [] ).add( deviceid ).add( variableid ).add( type ).add( length )
+      tips = $( ".validateTips" );
+ 
+    function updateTips( t ) {
+      tips
+        .text( t )
+        .addClass( "ui-state-highlight" );
+      setTimeout(function() {
+        tips.removeClass( "ui-state-highlight", 1500 );
+      }, 500 );
+    }
+/*Funcion select menu de la forma con jquery-ui.com*/
+    $(function(){
+    	$("#tipo").selectmenu();
+    })
+
+/*Agreaga nueva variable a la tabla con la forma de dialog. */
+    function addVariable() {
+      var valid = true;
+      allFields.removeClass( "ui-state-error" );
+ 
+      if ( valid ) {
+        $( "#devices tbody" ).append( "<tr>" +
+          "<td>" + deviceid.val() + "</td>" +
+          "<td>" + variableid.val() + "</td>" +
+          "<td>" + type.val() + "</td>" +
+          "<td>" + length.val() + "</td>" +
+          "<td>  <input class = 'removebutton' type='button' onclick='' value='Remove' data-extra='"+deviceid.val()+"'/> </td>" +
+        "</tr>" );
+        dialog.dialog( "close" );
+      }
+      return valid;
+    }
+ 
+    dialog = $( "#dialog-form" ).dialog({
+      autoOpen: false,
+      height: 400,
+      width: 350,
+      modal: true,
+      buttons: {
+        "Create variable": addVariable,
+        Cancel: function() {
+          dialog.dialog( "close" );
+        }
+      },
+      close: function() {
+        form[ 0 ].reset();
+        allFields.removeClass( "ui-state-error" );
+      }
+    });
+ 
+    form = dialog.find( "form" ).on( "submit", function( event ) {
+      event.preventDefault();
+      addVariable();
+    });
+
+    $(".removebutton").each(function(i, button){
+      $(button).on('click', function(){
+        alert($(this).data('extra')); 
+      });
+    });
+ 
+    $( "#create-variable" ).button().on( "click", function() {
+      dialog.dialog( "open" );
+      $.ajax({
+                method: "GET",
+                url: "",
+                data: { devices:"deviceid:"+deviceid.val()+",variableid:"+variableid.val()+",type:"+type.val()+",length:"+length.val()+""}
+            })
+      .done(function( msg ) {
+      alert( "Data Saved: " + msg );
+  });
+    });
+  } );
+  </script>
+</head>
+<body>
+ <!-- Despliga dialog con la forma de DeviceID, Variable ID , Type y Length para que sea llenado por el usuario y sea agreagado a la tabla. --> 
+<div id="dialog-form" title="Crear nuevas variables">
+  <p class="validateTips">All fields are required</p>
+  <form>
+    <fieldset>
+      <label for="text">Device ID</label>
+      <input type="text" name="deviceid" id="deviceid" class="text ui-widget-content ui-corner-all">
+      <label for="text">Variable ID</label>
+      <input type="text" name="variableid" id="variableid" class="text ui-widget-content ui-corner-all">
+      	<label for="type">Select type</label>
+      	<select name="type" id="type">
+      		<option disabled selected>Selecciona uno</option>
+      		<option>int</option>
+      		<option>double</option>
+      		<option>array</option>
+      	</select>
+        <br>
+      <label for="text">Length</label>
+      <input type="text" name="length" id="length" class="text ui-widget-content ui-corner-all">
+ 
+      <!-- Allow form submission with keyboard without duplicating the dialog button -->
+      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+    </fieldset>
+  </form>
+</div>
+<!--Muestra la tabla sola sin ningun dato en un contenedor-->
+<div id="users-contain" class="ui-widget">
+  <h1>Devices</h1>
+  <table id="devices" class="ui-widget ui-widget-content">
+    <thead>
+      <tr class="ui-widget-header ">
+        <th>Device ID</th>
+		    <th>Variable ID</th>
+        <th>Type</th>
+        <th>Length</th>	
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+<!--Button de crear nueva variable-->
+<button id="create-variable">Create new variable </button>
+</body>
+</html>
