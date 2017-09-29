@@ -5,6 +5,7 @@ using System.ServiceModel;
 using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
 using System.Web;
+using Newtonsoft.Json;
 
 namespace TestEdge
 {
@@ -52,7 +53,7 @@ namespace TestEdge
 
             }
         }
-
+        [WebGet(ResponseFormat = WebMessageFormat.Json)]
         void IComunicationApi.AddVariable(string device)
         {
             
@@ -89,8 +90,10 @@ namespace TestEdge
         [WebGet(ResponseFormat = WebMessageFormat.Json)]
         string IComunicationApi.ListVariable()
         {
+            var listaDeVariables = OPCServerService.Instance.List();
+            var serializedList = Newtonsoft.Json.JsonConvert.SerializeObject(listaDeVariables);
             Console.WriteLine(this.ToString());
-            return "Prueba";
+            return serializedList;
         }
        
         public override string ToString()

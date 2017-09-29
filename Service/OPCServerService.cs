@@ -32,9 +32,13 @@ namespace TestEdge
         {
 
         }
-        public void List ()
+        public List<Variable> List ()
         {
-
+            List<Variable> listaDeVariables = new List<Variable>();
+            listaDeVariables.Add(new Variable(){Id = "1", Length = 0, Type = "int"});
+            listaDeVariables.Add(new Variable(){Id = "2", Length = 0, Type = "int"});
+            listaDeVariables.Add(new Variable(){Id = "3", Length = 0, Type = "int"});
+            return listaDeVariables;
         }
     }
 }
