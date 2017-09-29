@@ -17,6 +17,7 @@ return function() {
     });
 
     var devices = [];
+    var variables = [];
     var data = []
 
     function post_initialize() {
@@ -26,7 +27,7 @@ return function() {
 
     		var addressSpace = server.engine.addressSpace;
 
-            devices['DeviceMethods'] = addDevice(new Device('DeviceMethods'))
+            devices['DeviceMethods'] = addDevice(new Device('DeviceMethods'));
 
             var manager = new XmlManager('./var_config.xml');
             data = manager.getXmlFromFile();
@@ -89,6 +90,9 @@ return function() {
 
                 console.log(nodeId, ": Se ha creado una variable con el nombre de '", name, "' con el valor de '", value, "'");
 
+                manager.makeXmlFile(variables);
+                console.log("Se ha generado un nuevo xml.");
+
                 var callMethodResult = {
                     statusCode: opcua.StatusCodes.Good,
                     outputArguments: [{
@@ -101,6 +105,7 @@ return function() {
             });
 
             function addDevice(device) {
+                variables[device.getName()] = [];
                 return addressSpace.addObject({
                     organizedBy: addressSpace.rootFolder.objects,
                     browseName: device.getName()
@@ -119,6 +124,7 @@ return function() {
                     	}
                 	}
             	});
+                variables[variable.getDevice()][variable.getId()] = variable;
             }
     	}
     	construct_my_address_space(server);
