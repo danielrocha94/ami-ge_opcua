@@ -26,6 +26,8 @@ return function() {
 
     		var addressSpace = server.engine.addressSpace;
 
+            devices['DeviceMethods'] = addDevice(new Device('DeviceMethods'))
+
             var manager = new XmlManager('./var_config.xml');
             data = manager.getXmlFromFile();
             data.devices.map((device) => {devices[device.getName()] = addDevice(device)});
@@ -34,6 +36,69 @@ return function() {
                 variables.map( (variable) => { 
                     addVariable(variable, devices[variable.getDevice()]);
                 });
+            });
+
+            var createVariableMethod = addressSpace.addMethod(devices['DeviceMethods'], {
+                browseName: "create variable method",
+
+                inputArguments: [
+                    {
+                        name: "id",
+                        description: { text: "specify the unique id for this variable"},
+                        dataType: opcua.DataType.String
+                    },{
+                        name: "data type",
+                        description: { text: "Specifies the type of data for this variable"},
+                        dataType: opcua.DataType.String
+                    },{
+                        name: "node id",
+                        description: { text: "Specify the node id for this variable"},
+                        dataType: opcua.DataType.String
+                    },{
+                        name: "name",
+                        description: { text: "Name this variable"},
+                        dataType: opcua.DataType.String
+                    },{
+                        name: "value",
+                        description: { text: "Specify value of the variable"},
+                        dataType: opcua.DataType.UInt32
+                    },{
+                        name: "device",
+                        description: { text: "Specify value of the device owner for this variable"},
+                        dataType: opcua.DataType.String
+                    }
+                ],
+                outputArguments: [{
+                    name: "Variable created!",
+                    description: { text: "The generated variable"},
+                    dataType: opcua.DataType.String,
+                    valueRank: 1
+                }]
+            });
+
+            createVariableMethod.bindMethod(function(inputArguments, context, callback){
+                var id = inputArguments[0].value;
+                var dataType = inputArguments[1].value;
+                var nodeId = inputArguments[2].value;
+                var name = inputArguments[3].value;
+                var value = inputArguments[4].value;
+                var device = inputArguments[5].value;
+
+                console.log(nodeId, ": Se ha creado una variable con el nombre de '", name, "' con el valor de '", value, "'");
+
+                var newVariable = new Variable(id, nodeId, name, value, dataType, device)
+                debugger;
+                addVariable(newVariable, devices[newVariable.getDevice()]);
+
+                var callMethodResult = {
+                    statusCode: opcua.StatusCodes.Good,
+                    outputArguments: [{
+                        dataType: opcua.DataType.String,
+                        arrayType: opcua.VariantArrayType.Array,
+                        value: newVariable
+                    }]
+                };
+                callback(null, callMethodResult);
             });
 
             function addDevice(device) {
