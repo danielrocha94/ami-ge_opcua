@@ -8,15 +8,15 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
 
-$(document).ready(function(){
+	$(document).ready(function(){
 
-      $.ajax({
-                method: "GET",
-                url: "http://localhost:8000/Samples/Service.svc/ListVariable",
-            })
-      .done(function( msg ) {
-      alert( "Data Saved: " + msg );
-      });
-});
+		$.ajax({
+			method: "GET",
+			url: "http://10.33.200.208:8000/Samples/Service.svc/ListVariable",
+		})
+		.done(function( msg ) {
+			alert( "Data Saved: " + msg );
+		});
+	});
 </script>
 </html>
