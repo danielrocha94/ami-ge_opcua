@@ -12,7 +12,7 @@ namespace TestEdge
     {
         public static async Task Start()
         {
-            string script = File.ReadAllText("TestServer.js");
+            string script = File.ReadAllText("nodejs/server/index.js");
             var func = Edge.Func(script);
 
             Console.WriteLine(await func(".NET"));
