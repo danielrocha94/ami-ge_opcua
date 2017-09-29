@@ -12,12 +12,29 @@ namespace TestEdge
     {
         public static async Task Start()
         {
-            string script = File.ReadAllText("nodejs/server/index.js");
+            Console.WriteLine("start");
+            string script = File.ReadAllText("server/index.js");
             var func = Edge.Func(script);
 
             Console.WriteLine(await func(".NET"));
+           
+            var invoke = func.Invoke(new
+            {
 
+                functionName = "createVariableMethod",
+                 id = "A1",
+                dataType = "int",
+                nodeId = "ns = 1; b = 1030FFAA",
+                name = "Temp",
+                value = "0",
+                device = "device1"
+
+
+        });
+            
+            Console.WriteLine("done");
         }
+    
 
         static void Main(string[] args)
         {
