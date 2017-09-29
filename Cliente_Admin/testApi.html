@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cliente Admin</title>
+</head>
+<link rel="stylesheet" href="styles/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+
+$(document).ready(function(){
+
+      $.ajax({
+                method: "GET",
+                url: "http://localhost:8000/Samples/Service.svc/ListVariable",
+            })
+      .done(function( msg ) {
+      alert( "Data Saved: " + msg );
+      });
+});
+</script>
+</html>

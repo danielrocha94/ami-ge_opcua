@@ -24,7 +24,7 @@ namespace TestEdge
         [WebGet(UriTemplate = "ListVariable", ResponseFormat = WebMessageFormat.Xml)]
 
         [OperationContract]
-        void ListVariable();
+        string ListVariable();
 
     }
 
@@ -32,37 +32,7 @@ namespace TestEdge
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class ApiService : IComunicationApi
     {
-        public int AddVariable(string v)
-        {
-            
-           
-            OPCServerService singleton = OPCServerService.Instance;
-            singleton.Add(v);
-
-            return 0;
-        }
-
-        public int DeleteVariable(string v)
-        {
-
-            OPCServerService singleton = OPCServerService.Instance;
-            singleton.Delete(v);
-
-
-            return 0;
-        }
-
-        public int ListVariable()
-        {
-            OPCServerService singleton = OPCServerService.Instance;
-            singleton.List();
-
-            Console.WriteLine("List is ready.");
-            return 0;
-        }
-
-
-        // Host the service within this EXE console application
+       // Host the service within this EXE console application
         public static void Main()
         {
 
@@ -116,11 +86,11 @@ namespace TestEdge
             OPCServerService singleton = OPCServerService.Instance;
             singleton.Delete(device);
         }
-
-        void IComunicationApi.ListVariable()
+        [WebGet(ResponseFormat = WebMessageFormat.Json)]
+        string IComunicationApi.ListVariable()
         {
             Console.WriteLine(this.ToString());
-
+            return "Prueba";
         }
        
         public override string ToString()
